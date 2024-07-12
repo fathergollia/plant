@@ -147,7 +147,7 @@
 
         async function startCamera() {
             try {
-                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
                 camera.srcObject = stream;
             } catch (err) {
                 console.error("카메라 접근 오류:", err);
@@ -195,7 +195,10 @@
         });
 
         resetButton.addEventListener('click', function() {
+            form.reset();
             observationList.innerHTML = '';
+            photoFrame.style.display = 'none';
+            camera.style.display = 'block';
         });
 
         saveImageButton.addEventListener('click', function() {
